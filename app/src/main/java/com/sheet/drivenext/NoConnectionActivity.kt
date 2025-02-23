@@ -9,6 +9,8 @@ import com.google.android.material.button.MaterialButton
 
 
 class NoConnectionActivity : AppCompatActivity() {
+    private lateinit var button: MaterialButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -17,12 +19,12 @@ class NoConnectionActivity : AppCompatActivity() {
     }
 
     private fun checkConnection() {
-        val button = findViewById<MaterialButton>(R.id.no_connection_button)
-        button.setOnClickListener(View.OnClickListener {
+        button = findViewById(R.id.no_connection_button)
+        button.setOnClickListener {
             if (isOnline()) {
-                val i: Intent = Intent(this, OnboardingActivity::class.java)
+                val i = Intent(this, OnboardingActivity::class.java)
                 startActivity(i)
             }
-        })
+        }
     }
 }

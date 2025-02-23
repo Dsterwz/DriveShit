@@ -4,4 +4,13 @@
     <string name="no_connection">Нет подключения к интернету</string>
     <string name="no_connection_advice">Проверьте подключение и повторите попытку</string>
     <string name="try_again">Повторите попытку</string>
+    <string name="onboarding1_title">Аренда автомобилей</string>
+    <string name="onboarding1_text">Открой для себя удобный и доступный способ передвижения</string>
+    <string name="onboarding2_title">Безопасно и удобно</string>
+    <string name="onboarding2_text">Арендуй автомобиль и наслаждайтесь его удобством</string>
+    <string name="onboarding3_title">Лучшие предложения</string>
+    <string name="onboarding3_text">Выбирай понравившееся среди сотен доступных автомобилей</string>
+    <string name="next">Далее</string>
+    <string name="skip">Пропустить</string>
+    <string name="enroll">Поехали</string>
 </resources>
