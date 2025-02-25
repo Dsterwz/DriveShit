@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OnboardingFragment3">
+    tools:context=".OnboardingFragment">
 
     <ImageView
+        android:id="@+id/onboarding_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/onboarding3"
+        android:contentDescription="@string/onboarding_logo"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,12 +18,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/onboarding3_title"
+        android:id="@+id/onboarding_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_semibold"
         android:paddingEnd="20dp"
-        android:text="@string/onboarding3_title"
         android:textColor="@color/secondary_black"
         android:textSize="24sp"
 
@@ -34,32 +34,14 @@
         tools:ignore="RtlSymmetry" />
 
     <TextView
-        android:id="@+id/onboarding3_text"
+        android:id="@+id/onboarding_text"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat_medium"
-        android:text="@string/onboarding3_text"
         android:textSize="14sp"
 
-        app:layout_constraintStart_toStartOf="@id/onboarding3_title"
-        app:layout_constraintTop_toBottomOf="@id/onboarding3_title" />
+        app:layout_constraintStart_toStartOf="@id/onboarding_title"
+        app:layout_constraintTop_toBottomOf="@id/onboarding_title" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/onboarding3_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@color/primary_violet"
-        android:fontFamily="@font/montserrat_medium"
-        android:paddingHorizontal="40dp"
-        android:paddingVertical="18dp"
-        android:text="@string/enroll"
-        android:textColor="@color/primary_light_grey"
-        app:cornerRadius="8dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/onboarding3_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

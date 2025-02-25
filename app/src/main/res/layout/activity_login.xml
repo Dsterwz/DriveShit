@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:labelFor="@id/edit_email"
+        android:text="@string/email"
+
+        app:layout_constraintBottom_toTopOf="@id/edit_email"
+        app:layout_constraintStart_toStartOf="@id/edit_email" />
+
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:autofillHints="emailAddress"
+        android:background="@color/transparent"
+        android:fontFamily="@font/montserrat_medium"
+        android:hint="@string/enter_email"
+        android:inputType="textEmailAddress"
+        android:paddingVertical="15dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/primary_grey"
+        app:strokeWidth="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:labelFor="@id/edit_password"
+        android:text="@string/password"
+
+        app:layout_constraintBottom_toTopOf="@id/edit_password"
+        app:layout_constraintStart_toStartOf="@id/edit_password" />
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="40dp"
+        android:autofillHints="password"
+        android:background="@color/transparent"
+        android:fontFamily="@font/montserrat_medium"
+        android:hint="@string/enter_password"
+        android:inputType="textPassword"
+        android:paddingVertical="15dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_email"
+        app:strokeColor="@color/primary_grey"
+        app:strokeWidth="2dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
