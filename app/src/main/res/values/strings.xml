@@ -20,4 +20,8 @@
     <string name="email">Электронная почта</string>
     <string name="password">Пароль</string>
     <string name="enter_password">Введите пароль</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="login_google">Войти через Google</string>
+    <string name="account_login">Войдите в аккаунт</string>
+    <string name="login_supporting_text">Пожалуйста, введите свои данные</string>
 </resources>
