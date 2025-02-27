@@ -24,4 +24,5 @@
     <string name="login_google">Войти через Google</string>
     <string name="account_login">Войдите в аккаунт</string>
     <string name="login_supporting_text">Пожалуйста, введите свои данные</string>
+    <string name="enter_correct_email">Введите корректный адрес почты</string>
 </resources>

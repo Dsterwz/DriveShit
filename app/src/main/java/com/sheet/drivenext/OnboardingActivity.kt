@@ -1,6 +1,7 @@
 package com.sheet.drivenext
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -15,6 +16,7 @@ class OnboardingActivity : AppCompatActivity() {
     private lateinit var buttonNext: MaterialButton
     private lateinit var buttonEnroll: MaterialButton
     private lateinit var buttonSkip: MaterialButton
+    private lateinit var settings: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +31,11 @@ class OnboardingActivity : AppCompatActivity() {
         adapter = OnboardingPagerAdapter(this)
         viewPager = findViewById(R.id.onboarding_pager)
         viewPager.adapter = adapter
+
+        settings = this.getSharedPreferences("appInfo", 0)
+        val editor: SharedPreferences.Editor = settings.edit()
+        editor.putBoolean("first_time", false)
+        editor.apply()
 
         buttonNext = findViewById(R.id.onboarding_next_button)
         buttonEnroll = findViewById(R.id.onboarding_enroll_button)

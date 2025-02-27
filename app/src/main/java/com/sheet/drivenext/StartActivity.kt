@@ -13,6 +13,7 @@ class StartActivity : AppCompatActivity() {
     private lateinit var buttonStartLogin: MaterialButton
     private lateinit var buttonStartSignUp: MaterialButton
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,6 +25,7 @@ class StartActivity : AppCompatActivity() {
         }
         init()
     }
+
 
     private fun init() {
         buttonStartLogin = findViewById(R.id.button_start_login)
