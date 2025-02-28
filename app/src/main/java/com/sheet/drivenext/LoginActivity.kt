@@ -3,12 +3,14 @@ package com.sheet.drivenext
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.EditText
+import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,8 +23,11 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var buttonLogin: MaterialButton
     private lateinit var buttonLoginGoogle: MaterialButton
     private lateinit var buttonSignUp: MaterialButton
+
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
+
+    private lateinit var toggleButton: ToggleButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,18 +42,27 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        editTextEmail = findViewById(R.id.edit_email)
-        editTextPassword = findViewById(R.id.edit_password)
+        editTextEmail = findViewById(R.id.edit_login_email)
+        editTextPassword = findViewById(R.id.edit_login_password)
 
         buttonLogin = findViewById(R.id.button_login)
         buttonLoginGoogle = findViewById(R.id.button_google_login)
         buttonSignUp = findViewById(R.id.button_sign_up)
         buttonForgot = findViewById(R.id.button_forgot)
 
+        toggleButton = findViewById(R.id.login_toggle_password)
 
         fun CharSequence?.isValidEmail() =
             !isNullOrEmpty() and Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
+        toggleButton.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                editTextPassword.inputType = InputType.TYPE_TEXT_VARIATION_NORMAL
+            } else {
+                editTextPassword.inputType =
+                    (InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD)
+            }
+        }
 
         editTextEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {

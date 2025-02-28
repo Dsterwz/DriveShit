@@ -25,4 +25,24 @@
     <string name="account_login">Войдите в аккаунт</string>
     <string name="login_supporting_text">Пожалуйста, введите свои данные</string>
     <string name="enter_correct_email">Введите корректный адрес почты</string>
+    <string name="create_password">Придумайте пароль</string>
+    <string name="confirm_password">Подтвердите пароль</string>
+    <string name="confidence_politics">Я согласен с условиями обслуживания и политикой конфиденциальности</string>
+    <string name="create_account">Создать аккаунт</string>
+    <string name="last_name">Фамилия</string>
+    <string name="enter_lastname">Введите фамилию</string>
+    <string name="first_name">Имя</string>
+    <string name="enter_firstname">Введите имя</string>
+    <string name="enter_surname">Введите отчество</string>
+    <string name="surname">Отчество</string>
+    <string name="birth_date">Дата рождения</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
+    <string name="sex">Пол</string>
+    <string name="driver_license_number">Номер водительского удостоверения</string>
+    <string name="driver_license_date">Дата выдачи</string>
+    <string name="avatar_advice">Добавление фотографии поможет владельцам и арендаторам узнать друг друга, когда они будут забирать машину</string>
+    <string name="upload_image">Загрузить фото</string>
+    <string name="upload_driver_license_image">Загрузите фото водительского удостоверения</string>
+    <string name="upload_image_passport">Загрузите фото паспорта</string>
 </resources>
