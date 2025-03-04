@@ -10,15 +10,24 @@ import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import com.google.android.material.button.MaterialButton
 
+//private const val CLIENT_ID = "780579203553-em5br64khgsgqmo57d942mt9aubu4gf7.apps.googleusercontent.com"
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var buttonForgot: MaterialButton
     private lateinit var buttonLogin: MaterialButton
     private lateinit var buttonLoginGoogle: MaterialButton
@@ -28,6 +37,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var editTextPassword: EditText
 
     private lateinit var toggleButton: ToggleButton
+    private lateinit var gso: GoogleSignInOptions
+    private lateinit var gsc: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,10 +121,19 @@ class LoginActivity : AppCompatActivity() {
             Log.d("myLogs", "Email: $email\nPassword: $password")
         })
 
-        buttonLoginGoogle.setOnClickListener(View.OnClickListener {
-            // запрос гугл
-            Log.d("myLogs", "Google")
+        gso =
+            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
+        gsc = GoogleSignIn.getClient(this, gso)
 
+        val acct = GoogleSignIn.getLastSignedInAccount(this)
+        if (acct != null) {
+            val i: Intent = Intent(this, SignUpActivity::class.java)
+            startActivity(i)
+        }
+
+        buttonLoginGoogle.setOnClickListener(View.OnClickListener {
+            val signInIntent: Intent = gsc.getSignInIntent()
+            startActivity(signInIntent)
         })
 
         buttonSignUp.setOnClickListener(View.OnClickListener {
@@ -125,5 +145,21 @@ class LoginActivity : AppCompatActivity() {
             Log.d("myLogs", "Forgot password")
         })
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1000) {
+            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+
+            try {
+                task.getResult(ApiException::class.java)
+                val intent: Intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            } catch (e: ApiException) {
+                Toast.makeText(applicationContext, "Something went wrong", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
     }
 }

@@ -10,11 +10,12 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity(), FragmentListener {
     private lateinit var pager: ViewPager2
     private lateinit var buttonBack: MaterialButton
     private lateinit var buttonNext: MaterialButton
     private lateinit var adapter: SignUpPagerAdapter
+    private var fragmentValidity: MutableList<Boolean> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,11 @@ class SignUpActivity : AppCompatActivity() {
 
         pager.adapter = adapter
         pager.isUserInputEnabled = false
+        buttonNext.isEnabled = false
+
+        for (i in 0 until adapter.itemCount) {
+            fragmentValidity.add(false)
+        }
 
         buttonBack.setOnClickListener(View.OnClickListener {
             if (pager.currentItem == 0) {
@@ -47,12 +53,22 @@ class SignUpActivity : AppCompatActivity() {
         })
 
         buttonNext.setOnClickListener(View.OnClickListener {
-            if (pager.currentItem == 2) {
-                val i: Intent = Intent(this, MainActivity::class.java)
+            val currentItem = pager.currentItem
+            buttonNext.isEnabled = fragmentValidity[currentItem]
+            if (currentItem == 2) {
+                val i: Intent = Intent(this, SignUpFinishActivity::class.java)
                 startActivity(i)
             } else {
                 pager.currentItem += 1
             }
         })
+
     }
+
+    override fun onFragmentDataChanged(isFragmentValid: Boolean) {
+        val currentItem = pager.currentItem
+        fragmentValidity[currentItem] = isFragmentValid
+        buttonNext.isEnabled = fragmentValidity[currentItem]
+    }
+
 }

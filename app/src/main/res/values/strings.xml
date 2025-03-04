@@ -45,4 +45,8 @@
     <string name="upload_image">Загрузить фото</string>
     <string name="upload_driver_license_image">Загрузите фото водительского удостоверения</string>
     <string name="upload_image_passport">Загрузите фото паспорта</string>
+    <string name="enter_correct_birthdate">Введите корректную дату рождения</string>
+    <string name="title_congrats">Поздравляем</string>
+    <string name="header_congrats">Пользуйтесь с удоволольствием</string>
+    <string name="congrats_description">Вы успешно зарегистрировались. Обработка ваших персональных данных займет около двух часов. Спасибо за ожидание.</string>
 </resources>

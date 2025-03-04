@@ -1,59 +1,110 @@
 package com.sheet.drivenext
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.ImageButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SignUpFragment3.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SignUpFragment3 : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SignUpFragment3 : SingUpBaseFragment() {
+    private lateinit var editTextDriverLicense: EditText
+    private lateinit var editTextDriverLicenseDate: EditText
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private lateinit var imageAvatar: ImageButton
+    private lateinit var imageDriverLicense: ImageButton
+    private lateinit var imagePassport: ImageButton
+
+    private var fragmentListener: FragmentListener? = null
+    private var isDriverLicenseFilled = false
+    private var isDriverLicenseAttached = false
+    private var isPassportAttached = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        fragmentListener = context as? FragmentListener ?: throw ClassCastException(
+            "$context must implement FragmentListener"
+        )
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up3, container, false)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        val view: View = inflater.inflate(R.layout.fragment_sign_up3, container, false)
+        editTextDriverLicense = view.findViewById(R.id.edit_driver_license)
+        editTextDriverLicenseDate = view.findViewById(R.id.edit_license_date)
+
+        imageAvatar = view.findViewById(R.id.attach_avatar)
+        imageDriverLicense = view.findViewById(R.id.image_driver_license)
+        imagePassport = view.findViewById(R.id.image_passport)
+
+        editTextDriverLicense.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (TextUtils.isEmpty(s)) {
+                    editTextDriverLicense.error = getString(R.string.enter_password)
+                }
+                isDriverLicenseFilled = !TextUtils.isEmpty(s)
+                fragmentListener?.onFragmentDataChanged(isValid())
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
+
+        editTextDriverLicenseDate.addTextChangedListener(DateMask())
+
+        imageAvatar.setOnClickListener(View.OnClickListener {
+            val i: Intent = Intent()
+            i.setType("image/*")
+            i.setAction(Intent.ACTION_GET_CONTENT)
+            startActivity(Intent.createChooser(i, "Select Picture"))
+        })
+
+        imageDriverLicense.setOnClickListener(View.OnClickListener {
+            val i: Intent = Intent()
+            i.setType("image/*")
+            i.setAction(Intent.ACTION_GET_CONTENT)
+            startActivity(Intent.createChooser(i, "Select Driver License"))
+            isDriverLicenseAttached = true
+            fragmentListener?.onFragmentDataChanged(isValid())
+        })
+
+        imagePassport.setOnClickListener(View.OnClickListener {
+            val i: Intent = Intent()
+            i.setType("image/*")
+            i.setAction(Intent.ACTION_GET_CONTENT)
+            startActivity(Intent.createChooser(i, "Select Passport"))
+            isPassportAttached = true
+            fragmentListener?.onFragmentDataChanged(isValid())
+        })
+
+        fragmentListener?.onFragmentDataChanged(isValid())
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SignUpFragment3.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SignUpFragment3().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    override fun isValid(): Boolean {
+        return editTextDriverLicenseDate.text.toString().trim()
+            .isNotEmpty() and isDriverLicenseFilled and isDriverLicenseAttached and isPassportAttached
     }
+
+
+    override fun onDetach() {
+        super.onDetach()
+        fragmentListener = null
+    }
+
+
 }

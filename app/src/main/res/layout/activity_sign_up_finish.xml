@@ -5,27 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_back_login"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/chevron_left"
-        android:backgroundTint="@color/transparent"
-        android:drawableTint="@color/transparent"
-
-
-        app:layout_constraintStart_toStartOf="@id/signup_title"
-        app:layout_constraintTop_toTopOf="@id/signup_title" />
+    tools:context=".SignUpFinishActivity">
 
     <TextView
         android:id="@+id/signup_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_semibold"
-        android:text="@string/create_account"
+        android:text="@string/header_congrats"
         android:textAlignment="center"
         android:textColor="@color/secondary_black"
         android:textSize="20sp"
@@ -36,18 +23,44 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/signup_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <ImageView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/check_circle_2"
+
+        app:layout_constraintBottom_toTopOf="@id/congrats_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/congrats_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="@string/title_congrats"
+        android:textColor="@color/secondary_black"
+        android:textSize="24sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="@string/congrats_description"
+        android:textAlignment="center"
+
+        app:layout_constraintStart_toStartOf="@id/congrats_title"
+        app:layout_constraintTop_toBottomOf="@id/congrats_title" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_signup_next"
+        android:id="@+id/button_congrats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40dp"
