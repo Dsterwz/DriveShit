@@ -32,7 +32,7 @@ class StartActivity : AppCompatActivity() {
         buttonStartSignUp = findViewById(R.id.button_start_sign_up)
 
         buttonStartLogin.setOnClickListener(View.OnClickListener {
-            val i: Intent = Intent(this, LoginActivity::class.java)
+            val i: Intent = Intent(this, MainActivity::class.java)
             startActivity(i)
         })
 

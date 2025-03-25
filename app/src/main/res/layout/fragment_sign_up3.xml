@@ -12,7 +12,7 @@
         android:layout_height="128dp"
         android:layout_marginBottom="40dp"
         android:backgroundTint="@color/transparent"
-        android:src="@drawable/avatar"
+        android:src="@drawable/avatar_example"
 
         app:layout_constraintBottom_toTopOf="@id/avatar_advice"
         app:layout_constraintEnd_toEndOf="parent"

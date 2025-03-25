@@ -49,4 +49,26 @@
     <string name="title_congrats">Поздравляем</string>
     <string name="header_congrats">Пользуйтесь с удоволольствием</string>
     <string name="congrats_description">Вы успешно зарегистрировались. Обработка ваших персональных данных займет около двух часов. Спасибо за ожидание.</string>
+    <string name="home">Home</string>
+    <string name="favorite">Избранное</string>
+    <string name="settings">Настройки</string>
+    <string name="theme">Тема</string>
+    <string name="chose_theme">Выберите тему</string>
+    <string name="notifications">Уведомления</string>
+    <string name="attach_car">Подключить свой автомобиль</string>
+    <string name="my_rents">Мои бронирования</string>
+    <string name="support">Помощь</string>
+    <string name="invite">Пригласи друга</string>
+
+    <string-array name="theme_entries">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System Default</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>system</item>
+    </string-array>
 </resources>
