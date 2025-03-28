@@ -59,16 +59,10 @@
     <string name="my_rents">Мои бронирования</string>
     <string name="support">Помощь</string>
     <string name="invite">Пригласи друга</string>
-
-    <string-array name="theme_entries">
-        <item>Light</item>
-        <item>Dark</item>
-        <item>System Default</item>
-    </string-array>
-
-    <string-array name="theme_values">
-        <item>light</item>
-        <item>dark</item>
-        <item>system</item>
-    </string-array>
+    <string name="change_password">Поменять пароль</string>
+    <string name="logout">Выйти из аккаунта</string>
+    <string name="home_title">Давайте найдём автомобиль</string>
+    <string name="rent">Забронировать</string>
+    <string name="details">Детали</string>
+    <string name="enter_car_brand">Введите марку автомобиля</string>
 </resources>

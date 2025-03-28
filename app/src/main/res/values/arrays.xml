@@ -1,0 +1,25 @@
+<resources>
+    <string-array name="theme_entries">
+        <item>Светлая</item>
+        <item>Тёмная</item>
+        <item>Как в системе</item>
+    </string-array>
+
+    <string-array name="theme_values">
+        <item>light</item>
+        <item>dark</item>
+        <item>system</item>
+    </string-array>
+
+    <string-array name="sex_entries">
+        <item>Мужской</item>
+        <item>Женский</item>
+    </string-array>
+
+    <string-array name="sex_values">
+        <item>male</item>
+        <item>female</item>
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,31 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory>
+
+        <EditTextPreference
+            app:defaultValue="sawka.sample@example.com"
+            app:key="email"
+            app:title="@string/email"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="password"
+            app:summary="@string/change_password"
+            app:title="@string/password" />
+
+        <ListPreference
+            app:defaultValue="male"
+            app:entries="@array/sex_entries"
+            app:entryValues="@array/sex_values"
+            app:key="sex"
+            app:title="@string/sex"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:defaultValue="sawka.sample@google.com"
+            app:key="google_email"
+            app:title="Google"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

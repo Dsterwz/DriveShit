@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         bottomNavigationView = findViewById(R.id.bottom_nav)
-        loadFragment(SettingsFragment())
+        loadFragment(HomeFragment())
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
