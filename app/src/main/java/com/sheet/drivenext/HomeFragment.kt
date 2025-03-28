@@ -9,10 +9,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.Locale
 
 class HomeFragment : Fragment(), OnCarClickListener {
     private lateinit var carRecycler: RecyclerView
     private lateinit var carSearch: SearchView
+    private lateinit var adapter: CarRecyclerAdapter
+
+    private var filteredList: ArrayList<CarItem> = ArrayList()
+    private var itemList: ArrayList<CarItem> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -21,16 +26,43 @@ class HomeFragment : Fragment(), OnCarClickListener {
         carRecycler = view.findViewById(R.id.car_recycler)
         carSearch = view.findViewById(R.id.car_search)
 
-        val itemList = listOf(
-            CarItem(R.drawable.iris, "S 500 Sedan", "Mercedes-Benz", 2500, "A/T", "Бензин"),
-            CarItem(R.drawable.iris, "S 500 Sedan", "Mercedes-Benz", 2500, "A/T", "Бензин"),
-            CarItem(R.drawable.iris, "S 500 Sedan", "Mercedes-Benz", 2500, "A/T", "Бензин"),
-        )
+        itemList.add(CarItem(R.drawable.iris, "S 500 Sedan", "Mercedes-Benz", 2500, "A/T", "Бензин"))
+        itemList.add(CarItem(R.drawable.iris, "S 500 Sedan", "Pukatti", 2500, "A/T", "Бензин"))
+        itemList.add(CarItem(R.drawable.iris, "S 500 Sedan", "Mercedes-Benz", 2500, "A/T", "Бензин"))
 
-        val adapter = CarRecyclerAdapter(itemList, this)
+
+        filteredList.addAll(itemList)
+
+        adapter = CarRecyclerAdapter(filteredList, this)
         carRecycler.layoutManager = LinearLayoutManager(activity)
         carRecycler.adapter = adapter
+
+        carSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filter(newText.orEmpty())
+                return true
+            }
+        })
+
         return view
+    }
+
+    private fun filter(text: String) {
+        filteredList.clear()
+        if (text.isEmpty()) {
+            filteredList.addAll(itemList)
+        } else {
+            for (item in itemList) {
+                if (item.brand.toLowerCase().contains(text.toLowerCase())) {
+                    filteredList.add(item)
+                }
+            }
+        }
+        adapter.notifyDataSetChanged()
     }
 
     override fun onRentButtonClick(position: Int) {
