@@ -17,7 +17,3 @@ class SettingsViewHolder(itemView: View, private val listener: OnItemClickListen
         listener.onItemClick(adapterPosition)
     }
 }
-
-interface OnItemClickListener {
-    fun onItemClick(position: Int)
-}

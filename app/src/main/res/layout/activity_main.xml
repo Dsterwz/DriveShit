@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_semibold"
-        android:text="@string/settings"
         android:textAlignment="center"
         android:textColor="@color/secondary_black"
         android:textSize="20sp"

@@ -65,4 +65,21 @@
     <string name="rent">Забронировать</string>
     <string name="details">Детали</string>
     <string name="enter_car_brand">Введите марку автомобиля</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="address">Адрес нахождения</string>
+    <string name="description">Описание</string>
+    <string name="rent_start">Начало аренды:</string>
+    <string name="rent_end">Конец аренды:</string>
+    <string name="rent_amount">Аренда автомобиля x3 дня:</string>
+    <string name="insurance_amount">Страховка  x3 дня:</string>
+    <string name="total">Итого</string>
+    <string name="deposit">Возвращаемый депозит</string>
+    <string name="next_continue">Продолжить</string>
+    <string name="rent_success">Бронирование успешно создано</string>
+    <string name="to_home">Домой</string>
+    <string name="to_rents">Перейти к своим бронированиям</string>
+    <string name="driver_fullname">ФИО водителя</string>
+    <string name="license_number">Номер ВУ</string>
+    <string name="rent_status">Статус аренды</string>
 </resources>

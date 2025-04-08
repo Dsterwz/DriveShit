@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import java.util.Locale
 
 class HomeFragment : Fragment(), OnCarClickListener {
     private lateinit var carRecycler: RecyclerView
@@ -67,19 +65,17 @@ class HomeFragment : Fragment(), OnCarClickListener {
 
     override fun onRentButtonClick(position: Int) {
         val selectedItem = (carRecycler.adapter as CarRecyclerAdapter).itemList[position]
-        Toast.makeText(
-            activity,
-            "Нажата кнопка элемента ${selectedItem.title}",
-            Toast.LENGTH_SHORT
-        ).show()
+        val fragmentTransaction = parentFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, CheckoutFragment())
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 
     override fun onDetailsButtonClick(position: Int) {
         val selectedItem = (carRecycler.adapter as CarRecyclerAdapter).itemList[position]
-        Toast.makeText(
-            activity,
-            "Нажата кнопка элемента ${selectedItem.title}",
-            Toast.LENGTH_SHORT
-        ).show()
+        val fragmentTransaction = parentFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, DetailsFragment())
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }

@@ -48,13 +48,16 @@ class SettingsFragment : Fragment(), OnItemClickListener {
         val selectedItem = (recyclerView.adapter as SettingsRecyclerAdapter).itemList[position]
         when (selectedItem.title) {
             getString(R.string.my_rents) -> {
+                loadFragment(MyRentsFragment())
             }
 
             getString(R.string.attach_car) -> {
             }
+
             getString(R.string.theme) -> run {
                 loadFragment(SettingsSubMenuFragment())
             }
+
             getString(R.string.notifications) -> run {
                 loadFragment(SettingsSubMenuFragment())
             }

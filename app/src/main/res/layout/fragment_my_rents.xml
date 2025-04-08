@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyRentsFragment"
+    android:paddingHorizontal="20dp"
+    android:paddingBottom="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:text="@string/my_rents" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rents_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
